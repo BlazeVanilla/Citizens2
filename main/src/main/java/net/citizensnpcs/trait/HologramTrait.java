@@ -2,6 +2,7 @@ package net.citizensnpcs.trait;
 
 import java.util.List;
 
+import net.minecraft.server.v1_16_R3.MinecraftServer;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.entity.EntityType;
@@ -153,7 +154,9 @@ public class HologramTrait extends Trait {
             if (update) {
                 nameNPC.teleport(currentLoc.clone().add(0, getEntityHeight(), 0), TeleportCause.PLUGIN);
             }
-            nameNPC.setName(npc.getFullName());
+            if(MinecraftServer.currentTick % 100 == 0) {
+                nameNPC.setName(npc.getFullName());
+            }
         }
         for (int i = 0; i < hologramNPCs.size(); i++) {
             NPC hologramNPC = hologramNPCs.get(i);
