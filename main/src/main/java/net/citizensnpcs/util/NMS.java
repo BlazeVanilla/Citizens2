@@ -8,6 +8,8 @@ import java.lang.reflect.Modifier;
 import java.util.Collection;
 import java.util.List;
 
+import net.citizensnpcs.Citizens;
+import net.minecraft.server.v1_16_R3.MinecraftServer;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Enderman;
@@ -337,7 +339,9 @@ public class NMS {
     }
 
     public static void playerTick(Player entity) {
-        BRIDGE.playerTick(entity);
+        if(MinecraftServer.currentTick % 5 == 0) {
+            BRIDGE.playerTick(entity);
+        }
     }
 
     public static void registerEntityClass(Class<?> clazz) {

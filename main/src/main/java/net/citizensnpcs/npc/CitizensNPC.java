@@ -143,8 +143,7 @@ public class CitizensNPC extends AbstractNPC {
 
     @Override
     public boolean isFlyable() {
-        updateFlyableState();
-        return super.isFlyable();
+        return false;
     }
 
     @Override
@@ -352,9 +351,6 @@ public class CitizensNPC extends AbstractNPC {
             if (!isSpawned()) {
                 resetCachedCoord();
                 return;
-            }
-            if (data().get(NPC.SWIMMING_METADATA, true)) {
-                NMS.trySwim(getEntity());
             }
             navigator.run();
             if (SUPPORT_GLOWING) {
